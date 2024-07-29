@@ -1,0 +1,30 @@
+name: Code Pipeline
+
+on:
+  push:
+    branches:
+      - development
+
+  pull_request:
+    branches:
+      - development
+      - master
+
+jobs:
+  build:
+    name: Check Code & Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install Dependencies
+        run: flutter pub get
+    
+      - name: Linter Analysis
+        run: flutter analyze
