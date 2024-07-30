@@ -98,6 +98,10 @@ class Application extends StatelessWidget {
       },
     ),
     scaffoldBackgroundColor: Palette.background.color,
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: Palette.foreground.color,
+      insetPadding: EdgeInsets.zero,
+    ),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: Palette.primary.color,
       selectionColor: Palette.primary.color.withOpacity(0.50),
