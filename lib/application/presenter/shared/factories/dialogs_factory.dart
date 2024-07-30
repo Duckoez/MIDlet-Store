@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -80,19 +81,25 @@ class Dialogs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      alignment: Alignment.center,
-      backgroundColor: backgroundColor ?? Palette.background.color,
-      insetPadding: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+    return BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX: 5,
+        sigmaY: 5,
       ),
-      child: Container(
-        constraints: BoxConstraints(
-          minHeight: MediaQuery.sizeOf(context).width - 90,
+      child: Dialog(
+        alignment: Alignment.center,
+        backgroundColor: backgroundColor ?? Palette.background.color,
+        insetPadding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
         ),
-        width: width ?? MediaQuery.sizeOf(context).width - 90,
-        child: child,
+        child: Container(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.sizeOf(context).width - 90,
+          ),
+          width: width ?? MediaQuery.sizeOf(context).width - 90,
+          child: child,
+        ),
       ),
     );
   }
