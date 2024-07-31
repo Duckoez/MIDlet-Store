@@ -18,35 +18,38 @@ class _GameTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(15, 25, 15, 25),
-      child: Column(
-        children: <Widget> [
-          Row(
-            children: <Widget> [
-              SizedBox(
-                height: 135,
-                child: _thumbnail(),
+    return InkWell(
+      onTap: () => context.push('/details/${game.title}'),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(15, 25, 15, 25),
+        child: Stack(
+          children: <Widget> [
+            SizedBox(
+              height: 135,
+              child: Row(
+                children: <Widget> [
+                  _thumbnail(),
+                  VerticalDivider(
+                    color: Palette.transparent.color,
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: _details(),
+                  ),
+                ],
               ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: _details(),
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 150, 0, 0),
+              child: Text(
+                game.description ?? "",
+                maxLines: 5,
+                overflow: TextOverflow.ellipsis,
+                style: Typographies.body(Palette.grey).style,
               ),
-            ],
-          ),
-          Divider(
-            color: Palette.transparent.color,
-            height: 15,
-          ),
-          Text(
-            game.description ?? "",
-            maxLines: 5,
-            overflow: TextOverflow.ellipsis,
-            style: Typographies.body(Palette.grey).style,
-          ),
-        ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -57,7 +60,7 @@ class _GameTile extends StatelessWidget {
       aspectRatio: 0.75,
       child: FutureBuilder(
         builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
-          Widget child;
+          final Widget child;
           if (snapshot.hasData) {
             child = Thumbnail(
               image: FileImage(snapshot.data!),
@@ -95,6 +98,7 @@ class _GameTile extends StatelessWidget {
   /// Creates the tile body with the [game] information.
   Widget _details() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget> [
         Text(

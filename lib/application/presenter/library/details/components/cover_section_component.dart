@@ -21,7 +21,6 @@ class _Cover extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<File> snapshot) {
           if (snapshot.hasData) {
             return Thumbnail(
-              border: const Border(),
               borderRadius: BorderRadius.zero,
               image: FileImage(snapshot.data!),
               filterQuality: FilterQuality.none,
