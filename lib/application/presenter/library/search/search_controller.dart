@@ -18,6 +18,8 @@ class _Controller {
   /// While the controller is fetching data, it updates the state of its [progress].
   final ValueNotifier<Progress> progress = ValueNotifier(Progress.loading);
 
+  final TextEditingController textController = TextEditingController();
+
   late GlobalKey overlayKey;
 
   late final List<Game> _games; 
@@ -72,5 +74,10 @@ class _Controller {
              vendor.contains(query) ||
              element.tags.any((tag) => tag.toLowerCase() == query);
     }).toList();
+  }
+
+  void updateQuery(String query) {
+    textController.text = query;
+    applySearch(query);
   }
 }

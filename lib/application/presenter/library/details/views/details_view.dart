@@ -28,6 +28,7 @@ class __DetailsState extends State<_Details> with WidgetsBindingObserver {
   @override
   void didChangeDependencies() {
     snackbar = ScaffoldMessenger.of(context);
+    snackbar.clearSnackBars();
 
     super.didChangeDependencies();
   }
