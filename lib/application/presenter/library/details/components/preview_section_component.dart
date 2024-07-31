@@ -84,7 +84,8 @@ class _PreviewState extends State<_Preview> {
     required int index,
     required List<Uint8List> previews,
   }) {
-    return GestureDetector(
+    return Thumbnail(
+      image: MemoryImage(previews[index]),
       onTap: () {
         showDialog(
           context: context,
@@ -96,9 +97,6 @@ class _PreviewState extends State<_Preview> {
           },
         );
       },
-      child: Thumbnail(
-        image: MemoryImage(previews[index]),
-      ),
     );
   }
 }

@@ -92,6 +92,7 @@ class Application extends StatelessWidget {
       shape: const BeveledRectangleBorder(),
       surfaceTintColor: Palette.background.color,
     ),
+    highlightColor: Palette.elements.color.withOpacity(0.10),
     pageTransitionsTheme: const PageTransitionsTheme(
       builders: <TargetPlatform, PageTransitionsBuilder> {
         TargetPlatform.android: FadeUpwardsPageTransitionsBuilder(),
@@ -102,6 +103,7 @@ class Application extends StatelessWidget {
       backgroundColor: Palette.foreground.color,
       insetPadding: EdgeInsets.zero,
     ),
+    splashColor: Palette.elements.color.withOpacity(0.10),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: Palette.primary.color,
       selectionColor: Palette.primary.color.withOpacity(0.50),
