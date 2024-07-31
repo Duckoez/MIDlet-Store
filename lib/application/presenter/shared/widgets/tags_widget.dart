@@ -7,6 +7,7 @@ import '../../../core/enumerations/typographies_enumeration.dart';
 class Tags extends StatelessWidget {
 
   const Tags({
+    required this.onTagTapped,
     required this.tags,
     super.key,
   });
@@ -15,6 +16,8 @@ class Tags extends StatelessWidget {
   /// 
   /// Used to show a tag label for each game tag.
   final List<String> tags;
+
+  final void Function(String tag) onTagTapped;
 
   @override
   Widget build(BuildContext context) {
@@ -39,22 +42,30 @@ class Tags extends StatelessWidget {
   /// Build a label [Widget] using the tag name. 
   Widget _tag(String tag) {
     return FittedBox(
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Palette.primary.color.withOpacity(0.33),
-            width: 1,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(10),
+        highlightColor: Palette.primary.color.withOpacity(0.15),
+        onTap: () {
+          onTagTapped(tag);
+        },
+        splashColor: Palette.primary.color.withOpacity(0.15),
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Palette.primary.color.withOpacity(0.33),
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(10),
+            color: Palette.primary.color.withOpacity(0.10),
           ),
-          borderRadius: BorderRadius.circular(10),
-          color: Palette.primary.color.withOpacity(0.10),
-        ),
-        height: 27.5,
-        padding: const EdgeInsets.fromLTRB(7.5, 0, 7.5, 1),
-        child: Align(
-          alignment: Alignment.center,
-          child: Text(
-            tag,
-            style: Typographies.tags(Palette.accent).style,
+          height: 27.5,
+          padding: const EdgeInsets.fromLTRB(7.5, 0, 7.5, 1),
+          child: Align(
+            alignment: Alignment.center,
+            child: Text(
+              tag,
+              style: Typographies.tags(Palette.accent).style,
+            ),
           ),
         ),
       ),

@@ -16,6 +16,7 @@ import '../../../external/services/github_service.dart';
 import '../../../source/interfaces/bucket_interface.dart';
 import '../../../source/interfaces/database_interface.dart';
 
+import '../../shared/extensions/messenger_widget.dart';
 import '../../shared/factories/buttons_factory.dart';
 import '../../shared/widgets/handler_widget.dart';
 import '../../shared/widgets/rating_widget.dart';

@@ -13,6 +13,21 @@ class _Search extends StatefulWidget {
 }
 
 class __SearchState extends State<_Search> {
+  late ScaffoldMessengerState snackbar;
+
+  @override
+  void didChangeDependencies() {
+    snackbar = ScaffoldMessenger.of(context);
+
+    super.didChangeDependencies();
+  }
+
+  @override
+  void dispose() {
+    snackbar.clearSnackBars();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

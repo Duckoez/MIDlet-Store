@@ -34,7 +34,7 @@ class _GameTile extends StatelessWidget {
                     width: 15,
                   ),
                   Expanded(
-                    child: _details(),
+                    child: _details(context),
                   ),
                 ],
               ),
@@ -96,7 +96,7 @@ class _GameTile extends StatelessWidget {
   }
 
   /// Creates the tile body with the [game] information.
-  Widget _details() {
+  Widget _details(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -131,6 +131,12 @@ class _GameTile extends StatelessWidget {
         ),
         Tags(
           tags: game.tags,
+          onTagTapped: (String tag) {
+            controller.updateQuery(tag);
+            ScaffoldMessenger.of(context).showSnackBar(Messenger(
+              message: 'Filter "$tag" applied, displaying all ${controller.games.value.length} games.',
+            ));
+          },
         ),
       ],
     );
