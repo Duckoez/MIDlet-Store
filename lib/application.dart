@@ -89,7 +89,11 @@ class Application extends StatelessWidget {
     bottomSheetTheme: BottomSheetThemeData(
       backgroundColor: Palette.background.color,
       elevation: 0,
-      shape: const BeveledRectangleBorder(),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(15),
+        ),
+      ),
       surfaceTintColor: Palette.background.color,
     ),
     highlightColor: Palette.elements.color.withOpacity(0.10),

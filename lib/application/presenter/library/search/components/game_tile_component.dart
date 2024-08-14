@@ -110,7 +110,7 @@ class _GameTile extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(1, 10, 0, 0),
           child: Text(
-            '${game.release} • ${game.vendor}',
+            '${game.release} • ${game.publisher}',
             style: Typographies.body(Palette.elements).style,
           ),
         ),
@@ -131,12 +131,6 @@ class _GameTile extends StatelessWidget {
         ),
         Tags(
           tags: game.tags,
-          onTagTapped: (String tag) {
-            controller.updateQuery(tag);
-            ScaffoldMessenger.of(context).showSnackBar(Messenger(
-              message: 'Filter "$tag" applied, displaying all ${controller.games.value.length} games.',
-            ));
-          },
         ),
       ],
     );
