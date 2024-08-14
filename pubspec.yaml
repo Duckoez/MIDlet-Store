@@ -28,4 +28,5 @@ flutter:
   assets:
     - assets/
     - assets/badges/
+    - assets/publishers/
   uses-material-design: true

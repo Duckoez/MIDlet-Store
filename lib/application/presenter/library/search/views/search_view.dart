@@ -53,18 +53,27 @@ class __SearchState extends State<_Search> {
                 ),
               ),
             ),
-            Visibility.maintain(
-              visible: false,
-              child: Button(
-                icon: Icons.filter_alt_rounded,
-                onTap: () {},
-              ),
+            Button(
+              icon: Icons.filter_alt_rounded,
+              onTap: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Modals.filter(
+                      publisherState: widget.controller.publisherState,
+                      tagsState: widget.controller.tagsState,
+                      applyFilters: widget.controller.applyFilters,
+                      clearFilters: widget.controller.clearFilters,
+                    );
+                  },
+                );
+              },
             ),
           ],
         ),
       ),
       body: ValueListenableBuilder(
-        valueListenable: widget.controller.games,
+        valueListenable: widget.controller.gamesState,
         builder: (BuildContext context, List<Game> listenable, Widget? _) {
           return _GameLister(
             controller: widget.controller,
