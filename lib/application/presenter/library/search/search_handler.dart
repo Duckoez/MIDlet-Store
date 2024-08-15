@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:midlet_store/application/presenter/shared/factories/modals/modals_factory.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/entities/game_entity.dart';
@@ -18,6 +17,7 @@ import '../../../source/interfaces/bucket_interface.dart';
 import '../../../source/interfaces/database_interface.dart';
 
 import '../../shared/factories/buttons_factory.dart';
+import '../../shared/factories/modals/modals_factory.dart';
 import '../../shared/widgets/handler_widget.dart';
 import '../../shared/widgets/rating_widget.dart';
 import '../../shared/widgets/tags_widget.dart';
