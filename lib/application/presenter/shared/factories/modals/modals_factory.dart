@@ -69,35 +69,38 @@ class Modals extends StatelessWidget {
       builder: (BuildContext context) {
         return Column(
           children: <Widget> [
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget> [
-                  Text(
-                    title.toUpperCase(),
-                    style: Typographies.headline(Palette.elements).style,
-                  ),
-                  const Spacer(),
-                  Button(
-                    icon: Icons.clear_all_rounded,
-                    onTap: () {
-                      clearFilters();
-                      context.pop();
-                    },
-                  ),
-                  VerticalDivider(
-                    color: Palette.transparent.color,
-                    width: 7.5,
-                  ),
-                  Button(
-                    icon: Icons.check_rounded,
-                    onTap: () {
-                      applyFilters();
-                      context.pop();
-                    },
-                  ),
-                ],
+            Container(
+              color: Palette.background.color,
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget> [
+                    Text(
+                      title.toUpperCase(),
+                      style: Typographies.headline(Palette.elements).style,
+                    ),
+                    const Spacer(),
+                    Button(
+                      icon: Icons.clear_all_rounded,
+                      onTap: () {
+                        clearFilters();
+                        context.pop();
+                      },
+                    ),
+                    VerticalDivider(
+                      color: Palette.transparent.color,
+                      width: 7.5,
+                    ),
+                    Button(
+                      icon: Icons.check_rounded,
+                      onTap: () {
+                        applyFilters();
+                        context.pop();
+                      },
+                    ),
+                  ],
+                ),
               ),
             ),
             Divider(
