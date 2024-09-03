@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/entities/midlet_entity.dart';
 import '../../../../core/enumerations/palette_enumeration.dart';
 import '../../../../core/enumerations/tag_enumeration.dart';
 import '../../../../core/enumerations/typographies_enumeration.dart';
 
-import '../../../library/search/search_handler.dart';
 import '../../widgets/section_widget.dart';
 
 import '../buttons_factory.dart';
@@ -14,29 +14,30 @@ part '../modals/components/categories_filter_component.dart';
 part '../modals/components/publishers_filter_component.dart';
 
 part '../modals/objects/filter_modal.dart';
+part '../modals/objects/midlets_modal.dart';
 
 /// A factory for creating [Widget] modals.
 class Modals extends StatelessWidget {
 
   const Modals._internal({
-    required this.applyFilters,
     required this.child,
-    required this.clearFilters,
+    required this.onClose,
+    this.onFinish,
     required this.title,
   });
-
-  /// The function for apply filters.
-  /// 
-  /// This function is used when the "Check" button is tapped.
-  final void Function() applyFilters;
 
   /// The content of a modal.
   final Widget child;
 
-  /// The function for clear the filter query.
+  /// The function for cancel the modal action.
   /// 
-  /// This function is used when the "Clear" button is tapped.
-  final void Function() clearFilters;
+  /// This function is used when the "❌" button is tapped.
+  final void Function() onClose;
+
+  /// The function for finish the modal action.
+  /// 
+  /// This function is used when the "✅" button is tapped.
+  final void Function()? onFinish;
 
   /// The modal's title.
   /// 
@@ -53,12 +54,29 @@ class Modals extends StatelessWidget {
     required void Function() clearFilters,
   }) {
     return Modals._internal(
-      applyFilters: applyFilters,
-      clearFilters: clearFilters,
-      title: 'Filters',
+      onFinish: applyFilters,
+      onClose: clearFilters,
+      title: 'Filter Search',
       child: _Filter(
         publisherState: publisherState,
         tagsState: tagsState,
+      ),
+    );
+  }
+
+  /// The midlets modal.
+  /// 
+  /// Used on the [Details] view to show all the game midlets available.
+  factory Modals.midlets({
+    required void Function(MIDlet) installMIDlet,
+    required List<MIDlet> midlets,
+  }) {
+    return Modals._internal(
+      onClose: () {},
+      title: 'Change Version',
+      child: _MIDlets(
+        installMIDlet: installMIDlet,
+        midlets: midlets,
       ),
     );
   }
@@ -69,7 +87,7 @@ class Modals extends StatelessWidget {
       builder: (BuildContext context) {
         return Column(
           children: <Widget> [
-            Container(
+            Material(
               color: Palette.background.color,
               child: Padding(
                 padding: const EdgeInsets.all(15),
@@ -81,23 +99,27 @@ class Modals extends StatelessWidget {
                       style: Typographies.headline(Palette.elements).style,
                     ),
                     const Spacer(),
-                    Button(
-                      icon: Icons.clear_all_rounded,
-                      onTap: () {
-                        clearFilters();
-                        context.pop();
-                      },
-                    ),
-                    VerticalDivider(
-                      color: Palette.transparent.color,
-                      width: 7.5,
-                    ),
-                    Button(
-                      icon: Icons.check_rounded,
-                      onTap: () {
-                        applyFilters();
-                        context.pop();
-                      },
+                    Wrap(
+                      spacing: onFinish != null ? 7.5 : 0,
+                      children: <Widget> [
+                        Button(
+                          icon: Icons.clear_rounded,
+                          onTap: () {
+                            onClose();
+                            context.pop();
+                          },
+                        ),
+                        Visibility(
+                          visible: onFinish != null,
+                          child: Button(
+                            icon: Icons.check_rounded,
+                            onTap: () {
+                              if (onFinish != null) onFinish!();
+                              context.pop();
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
