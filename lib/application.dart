@@ -7,6 +7,7 @@ import '../application/core/enumerations/palette_enumeration.dart';
 import '../application/presenter/library/details/details_handler.dart';
 import '../application/presenter/library/launcher/launcher_handler.dart';
 import '../application/presenter/library/search/search_handler.dart';
+import '../application/core/enumerations/typographies_enumeration.dart';
 
 class Application extends StatelessWidget {
 
@@ -108,6 +109,14 @@ class Application extends StatelessWidget {
       insetPadding: EdgeInsets.zero,
     ),
     splashColor: Palette.elements.color.withOpacity(0.10),
+    tabBarTheme: TabBarTheme(
+      dividerColor: Palette.divider.color,
+      dividerHeight: 1,
+      indicatorColor: Palette.primary.color,
+      labelStyle: Typographies.numbers(Palette.elements).style,
+      overlayColor: WidgetStatePropertyAll(Palette.primary.color.withOpacity(0.10)),
+      unselectedLabelStyle: Typographies.numbers(Palette.disabled).style,
+    ),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: Palette.primary.color,
       selectionColor: Palette.primary.color.withOpacity(0.50),

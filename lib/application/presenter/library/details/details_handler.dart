@@ -24,6 +24,7 @@ import '../../shared/extensions/messenger_widget.dart';
 import '../../shared/factories/buttons_factory.dart';
 import '../../shared/factories/dialogs_factory.dart';
 
+import '../../shared/factories/modals/modals_factory.dart';
 import '../../shared/widgets/handler_widget.dart';
 import '../../shared/widgets/section_widget.dart';
 import '../../shared/widgets/thumbnail_widget.dart';
