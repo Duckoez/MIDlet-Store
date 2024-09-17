@@ -38,12 +38,9 @@ class __SearchState extends State<_Search> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           children: <Widget> [
-            Visibility.maintain(
-              visible: false,
-              child: Button(
-                icon: Icons.arrow_back_rounded,
-                onTap: context.pop,
-              ),
+            Button(
+              icon: Icons.arrow_back_rounded,
+              onTap: context.pop,
             ),
             Expanded(
               child: Padding(
