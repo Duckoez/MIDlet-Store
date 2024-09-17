@@ -6,6 +6,7 @@ import '../../../core/enumerations/palette_enumeration.dart';
 class Thumbnail extends StatelessWidget {
 
   const Thumbnail({
+    this.aspectRatio,
     this.border,
     this.borderRadius,
     this.filterQuality,
@@ -13,6 +14,8 @@ class Thumbnail extends StatelessWidget {
     this.onTap,
     super.key,
   });
+
+  final double? aspectRatio;
 
   final BoxBorder? border;
 
@@ -40,7 +43,7 @@ class Thumbnail extends StatelessWidget {
       borderRadius: borderRadius ?? BorderRadius.circular(15),
       onTap: onTap,
       child: AspectRatio(
-        aspectRatio: 0.75,
+        aspectRatio: aspectRatio ?? 0.75,
         child: _decoration(),
       ),
     );
