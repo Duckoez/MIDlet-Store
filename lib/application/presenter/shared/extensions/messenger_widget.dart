@@ -11,6 +11,7 @@ class Messenger extends SnackBar {
     required this.message,
     super.key,
   }) : super(
+    backgroundColor: Palette.transparent.color,
     content: Container(
       decoration: BoxDecoration(
         border: Border(
@@ -18,10 +19,10 @@ class Messenger extends SnackBar {
             color: Palette.divider.color,
             width: 1,
           ),
-          top: BorderSide(
-            color: Palette.divider.color,
-            width: 1,
-          ),
+        ),
+        color: Palette.foreground.color,
+        borderRadius: const BorderRadius.vertical(
+          top: Radius.circular(15),
         ),
       ),
       child: Section(

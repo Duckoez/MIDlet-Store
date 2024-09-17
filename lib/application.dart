@@ -5,8 +5,10 @@ import 'package:go_router/go_router.dart';
 import '../application/core/enumerations/palette_enumeration.dart';
 
 import '../application/presenter/library/details/details_handler.dart';
+import '../application/presenter/library/home/home_handler.dart';
 import '../application/presenter/library/launcher/launcher_handler.dart';
 import '../application/presenter/library/search/search_handler.dart';
+
 import '../application/core/enumerations/typographies_enumeration.dart';
 
 class Application extends StatelessWidget {
@@ -60,6 +62,12 @@ class Application extends StatelessWidget {
         path: '/details/:title',
         builder: (BuildContext context, GoRouterState state) {
           return Details(state.pathParameters['title']!);
+        },
+      ),
+      GoRoute(
+        path: '/home',
+        builder: (BuildContext context, GoRouterState state) {
+          return const Home();
         },
       ),
       GoRoute(

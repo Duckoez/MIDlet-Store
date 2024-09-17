@@ -94,7 +94,6 @@ class __DetailsState extends State<_Details> with WidgetsBindingObserver {
           _Cover(
             controller: widget.controller,
           ),
-          _divider(),
           _About(
             description: widget.controller.game.description ?? '',
           ),

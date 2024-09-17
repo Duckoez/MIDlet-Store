@@ -54,11 +54,9 @@ class Thumbnail extends StatelessWidget {
   /// The bug does not occur when using a [Container].
   Widget _decoration() {
     final BoxDecoration decoration = BoxDecoration(
-      border: border ?? Border.all(
-        color: Palette.divider.color,
-        width: 1,
-      ),
+      border: border,
       borderRadius: borderRadius ?? BorderRadius.circular(15),
+      boxShadow: kElevationToShadow[3],
       color: Palette.foreground.color,
       image: DecorationImage(
         filterQuality: filterQuality ?? FilterQuality.high,
