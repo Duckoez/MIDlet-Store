@@ -1,6 +1,6 @@
 import '../entities/midlet_entity.dart';
 
-/// The entity resposible for the game information.
+/// The entity responsible for the game information.
 class Game {
 
   Game({
@@ -22,10 +22,10 @@ class Game {
   /// A list of all [MIDlet] files available for this game.
   final List<MIDlet> midlets;
 
-  /// The year the year when the game was released.
+  /// The year the game was released.
   final int release;
 
-  /// A list of game caracteristcs such as Action, Shooter, Sports...
+  /// A list of game characteristcs such as Action, Shooter, Sports...
   final List<String> tags;
 
   /// Self-explanatory, just the game's title.
